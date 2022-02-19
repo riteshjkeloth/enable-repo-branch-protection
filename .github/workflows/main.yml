@@ -16,6 +16,7 @@ on:
       ORG_NAME:
         description: 'Provide the organization name'
         required: true
+        default: 'My-Organization-Inc'
         type: string
       API_TOKEN:
         description: 'TOKEN having the right permission to target repositories'
@@ -24,10 +25,12 @@ on:
       BranchName:
         description: 'branch name, only if its other than "main"'
         required: false
+        default: 'main'
         type: string
       GithubApiUrl:
         description: 'API URL, only if its other than "https://api.github.com"'
         required: false
+        default: 'https://api.github.com'
         type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
