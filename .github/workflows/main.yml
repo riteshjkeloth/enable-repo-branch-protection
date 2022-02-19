@@ -29,7 +29,6 @@ on:
         description: 'API URL, only if its other than "https://api.github.com"'
         required: false
         type: string
-      
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -48,7 +47,7 @@ jobs:
         run: |
           echo Executing enable-repo-branch-protection.sh
           chmod +x $GITHUB_WORKSPACE/enable-repo-branch-protection.sh
-          $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $ORG_NAME $API_TOKEN $BranchName $GithubApiUrl
+          $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $ORG_NAME $API_TOKEN $BranchName $GithubApiUrl $GITHUB_WORKSPACE
         env:
           ORG_NAME: ${{ github.event.inputs.ORG_NAME }}
           API_TOKEN: ${{ github.event.inputs.API_TOKEN }}
