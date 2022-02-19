@@ -1,7 +1,7 @@
 #!/bin/bash
 
 orgName=$1
-TOKEN=$2
+token=$2
 branchName=${3:-"main"}
 githubApiUrl=${4:-"https://api.github.com"}
 currDir=${5:-"."}
@@ -19,7 +19,7 @@ fi
   listresponse=$(curl -sw '%{http_code}' \
     -X GET \
     -H "Accept: application/vnd.github.v3+json" \
-    -H "Authorization:token $TOKEN" \
+    -H "Authorization:token $token" \
     $githubApiUrl/orgs/$orgName/repos -o $currDir/working/repoList.json)
 
     if [ "$listresponse" -eq 200 ]; then
@@ -46,16 +46,16 @@ fi
     response=$(curl -sw '%{http_code}' \
                 -X PUT \
                 -H "Accept: application/vnd.github.v3+json" \
-                -H "Authorization:token $TOKEN" \
+                -H "Authorization:token $token" \
                 -o /dev/null \
                 $githubApiUrl/repos/$repoFullName/branches/$branchName/protection \
                 -d "@${currDir}/rules/branch-protection-rule.json")
 
     # update status file
     printf "$format" \
-    "$repoFullName" "$response" >> $currDir/working/status.file
+    "$repoFullName" "$response" >> working/status.file
   done
 
   # print statuses
   echo "Status Report:"
-  cat $currDir/working/status.file
+  cat working/status.file
