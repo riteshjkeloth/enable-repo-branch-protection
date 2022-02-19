@@ -12,6 +12,24 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      ORG_NAME:
+        description: 'Provide the organization name'
+        required: true
+        type: string
+      API_TOKEN:
+        description: 'TOKEN having the right permission to target repositories'
+        required: true
+        type: string
+      BranchName:
+        description: 'branch name, only if its other than "main"'
+        required: false
+        type: string
+      GithubApiUrl:
+        description: 'API URL, only if its other than "https://api.github.com"'
+        required: false
+        type: string
+      
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
