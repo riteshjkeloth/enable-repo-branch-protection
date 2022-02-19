@@ -4,6 +4,7 @@ orgName=$1
 TOKEN=$2
 branchName=${3:-"main"}
 githubApiUrl=${4:-"https://api.github.com"}
+currDir=${5:-"."}
 
 if [[ ($# -eq 0) || ($# -eq 1) ]]
   then
@@ -19,7 +20,7 @@ fi
     -X GET \
     -H "Accept: application/vnd.github.v3+json" \
     -H "Authorization:token $TOKEN" \
-    $githubApiUrl/orgs/$orgName/repos -o working/repoList.json)
+    $githubApiUrl/orgs/$orgName/repos -o $currDir/working/repoList.json)
 
     if [ "$listresponse" -eq 200 ]; then
       echo "Fetched list of repos successfully!"
@@ -30,15 +31,15 @@ fi
     fi;
 
   #fetch project urls
-  repoFullNames=`jq -r '.[].full_name' working/repoList.json`
+  repoFullNames=`jq -r '.[].full_name' $currDir/working/repoList.json`
 
   # initialize status file
   header="%40s\t|\t%5s\n"
   sep="=========================================="
   format="%40s\t|\t%5d\n"
   width=65
-  printf "$header" "REPO-NAME(Full)" "STATUS" > working/status.file
-  printf "%$width.${width}s\n" "$sep$sep" >> working/status.file
+  printf "$header" "REPO-NAME(Full)" "STATUS" > $currDir/working/status.file
+  printf "%$width.${width}s\n" "$sep$sep" >> $currDir/working/status.file
 
   # loop through project list to set the protection rules
   for repoFullName in ${repoFullNames[@]}; do
@@ -48,13 +49,13 @@ fi
                 -H "Authorization:token $TOKEN" \
                 -o /dev/null \
                 $githubApiUrl/repos/$repoFullName/branches/$branchName/protection \
-                -d '@rules/branch-protection-rule.json')
+                -d "@${currDir}/rules/branch-protection-rule.json")
 
     # update status file
     printf "$format" \
-    "$repoFullName" "$response" >> working/status.file
+    "$repoFullName" "$response" >> $currDir/working/status.file
   done
 
   # print statuses
   echo "Status Report:"
-  cat working/status.file
+  cat $currDir/working/status.file
