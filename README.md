@@ -31,6 +31,12 @@
     `enable-repo-branch-protection.sh <OrganizationName> <Token>`
 
 #### Option B: Run using Github Actions
- 1. ***Work in progress
+ 1. On github ui, go to [repository](https://github.com/riteshjkeloth/enable-repo-branch-protection)
+ 2. Click on [Actions](https://github.com/riteshjkeloth/enable-repo-branch-protection/actions)
+ 3. Click on 'Enable repo branch protection' workflow under 'All workflows' on the left
+ 4. On the right, Click on 'Run workflow' button, it will bring up input requested parameter values
+ 5. Click on 'Run workflow'
+ 6. This will run the Jobs configured in the github worklow.
+
 ### Contact
  - Ritesh Keloth
