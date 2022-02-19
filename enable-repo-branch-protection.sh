@@ -2,9 +2,11 @@
 
 orgName=$1
 token=$2
-branchName=${3:-"main"}
-githubApiUrl=${4:-"https://api.github.com"}
-currDir=${5:-"."}
+currDir=${3:-"."}
+branchName=${4:-"main"}
+githubApiUrl=${5:-"https://api.github.com"}
+
+echo "$currDir"
 
 if [[ ($# -eq 0) || ($# -eq 1) ]]
   then
