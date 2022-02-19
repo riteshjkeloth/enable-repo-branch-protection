@@ -29,4 +29,5 @@ jobs:
       - name: Execute bash script
         run: |
           echo Executing enable-repo-branch-protection.sh,
+          chmod +x $GITHUB_WORKSPACE/enable-repo-branch-protection.sh
           $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $ORG_NAME $API_TOKEN.
