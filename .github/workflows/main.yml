@@ -53,6 +53,6 @@ jobs:
           $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $ORG_NAME $API_TOKEN $GITHUB_WORKSPACE $BranchName $GithubApiUrl
         env:
           ORG_NAME: ${{ github.event.inputs.ORG_NAME }}
-          API_TOKEN: ${{ github.event.inputs.API_TOKEN }}
+          API_TOKEN: ${{ secrets.API_TOKEN }}
           BranchName: ${{ github.event.inputs.BranchName }}
           GithubApiUrl: ${{ github.event.inputs.GithubApiUrl }}
