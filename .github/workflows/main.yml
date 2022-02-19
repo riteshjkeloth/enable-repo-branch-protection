@@ -21,7 +21,6 @@ on:
       API_TOKEN:
         description: 'TOKEN having the right permission to target repositories'
         required: true
-        default: ${{ secrets.API_TOKEN }}
         type: string
       BranchName:
         description: 'branch name, only if its other than "main"'
