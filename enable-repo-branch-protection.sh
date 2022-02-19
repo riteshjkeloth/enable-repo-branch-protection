@@ -53,9 +53,9 @@ fi
 
     # update status file
     printf "$format" \
-    "$repoFullName" "$response" >> working/status.file
+    "$repoFullName" "$response" >> $currDir/working/status.file
   done
 
   # print statuses
   echo "Status Report:"
-  cat working/status.file
+  cat $currDir/working/status.file
