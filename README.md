@@ -24,7 +24,13 @@
  - Improved code quality and reliability
 
 ### Steps to follow
- - Open /rules/protection-rule.json
+#### Option A: Run locally(tested on Mac)
+ 1. Clone the repo in your local
+ 2. Open /rules/protection-rule.json and make required changes to the rules. More details can be found in Github documentation [here](https://docs.github.com/en/rest/reference/branches#update-branch-protection)
+ 3. Execute the shell script as below \
+    `enable-repo-branch-protection.sh <OrganizationName> <Token>`
 
+#### Option B: Run using Github Actions
+ 1. ***Work in progress
 ### Contact
  - Ritesh Keloth
