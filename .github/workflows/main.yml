@@ -46,6 +46,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Execute bash script
         run: |
-          echo Executing enable-repo-branch-protection.sh,
+          echo Executing enable-repo-branch-protection.sh
           chmod +x $GITHUB_WORKSPACE/enable-repo-branch-protection.sh
-          $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $ORG_NAME $API_TOKEN.
+          $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $ORG_NAME $API_TOKEN $BranchName $GithubApiUrl
+        env:
+          ORG_NAME: ${{ github.event.inputs.ORG_NAME }}
+          API_TOKEN: ${{ github.event.inputs.API_TOKEN }}
+          BranchName: ${{ github.event.inputs.BranchName }}
+          GithubApiUrl: ${{ github.event.inputs.GithubApiUrl }}
