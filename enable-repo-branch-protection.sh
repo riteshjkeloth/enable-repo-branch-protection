@@ -2,9 +2,10 @@
 
 orgName=$1
 token=$2
-currDir=${3:-"."}
-branchName=${4:-"main"}
-githubApiUrl=${5:-"https://api.github.com"}
+fromDate=${3:-"2022-02-18"}
+currDir=${4:-"."}
+branchName=${5:-"main"}
+githubApiUrl=${6:-"https://api.github.com"}
 
 echo "$currDir"
 
@@ -32,8 +33,9 @@ fi
       exit 1
     fi;
 
-  #fetch project urls
-  repoFullNames=$(jq -r '.[].full_name' $currDir/working/repoList.json)
+  #fetch project urls created after the input date
+#  repoFullNames=$(jq -r '.[].full_name' $currDir/working/repoList.json)
+  repoFullNames=$(jq --arg s "$fromDate" -r '.[] | select(.created_at > (($s| strptime("%Y-%m-%d")) | strftime("%Y-%m-%d"))) | .full_name' $currDir/working/repoList.json)
 
   # initialize status file
   header="%40s\t|\t%5s\n"

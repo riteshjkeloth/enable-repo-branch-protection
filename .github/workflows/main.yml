@@ -13,14 +13,19 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      ORG_NAME:
+      OrgName:
         description: 'Provide the organization name'
         required: true
         default: 'My-Organization-Inc'
         type: string
-      API_TOKEN:
+      ApiToken:
         description: 'TOKEN having the right permission to target repositories'
         required: true
+        type: string
+      FromDate:
+        description: 'Filter repos created after this Date. format yyyy-mm-dd'
+        required: false
+        default: '2022-02-18'
         type: string
       BranchName:
         description: 'branch name, only if its other than "main"'
@@ -50,9 +55,10 @@ jobs:
         run: |
           echo Executing enable-repo-branch-protection.sh
           chmod +x $GITHUB_WORKSPACE/enable-repo-branch-protection.sh
-          $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $ORG_NAME $API_TOKEN $GITHUB_WORKSPACE $BranchName $GithubApiUrl
+          $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $OrgName $ApiToken $FromDate $GITHUB_WORKSPACE $BranchName $GithubApiUrl
         env:
-          ORG_NAME: ${{ github.event.inputs.ORG_NAME }}
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          OrgName: ${{ github.event.inputs.OrgName }}
+#          ApiToken: ${{ secrets.API_TOKEN }}
+          FromDate: ${{ github.event.inputs.FromDate }}
           BranchName: ${{ github.event.inputs.BranchName }}
           GithubApiUrl: ${{ github.event.inputs.GithubApiUrl }}

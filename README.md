@@ -1,7 +1,7 @@
 # Enable repo branch protection
 
 ## Introduction
-  This script can be used to enable branch protection rule for all the public repositories in your organization
+  A simple solution, easy to understand & maintain that can be used to enable branch protection rule for all the public repositories in your Github organization. Best suited if you have several existing repositories which do not have branch protection rules enabled.
 
 ### Pre-requisites
  - bash
@@ -11,12 +11,13 @@
 ### Input parameters
  - OrganizationName
  - API token having owner/admin permissions on the target repositories
+ - FROM Date. This is used to filter repos created after this Date. `yyyy-mm-dd`
  - branchName(optional). defaults to 'main'
  - githubApiUrl(optional). defaults to 'https://api.github.com'
  
 ### What does the script do?
- - Fetches the list of repositories for the organization
- - Sets the branch protection rules for the specified branch
+ - Fetches the list of repositories for the organization created after the input FromDate
+ - Sets the branch protection rules for the specified branch(default 'main')
 
 ### Benefits:
  - Ensures the changes being pushed to the repositories goes through a right review/approval process
