@@ -13,7 +13,7 @@ if [[ ($# -eq 0) || ($# -eq 1) ]]
   then
     echo "ERROR: Invalid number of arguments supplied. Expected organization-name and token"
     echo "     e.g."
-    echo "       enable-repo-branch.protection.sh abcorg.inc token123"
+    echo "       enable-repo-branch.protection.sh abcorg.inc token1234"
     exit 1
 fi
 
