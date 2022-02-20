@@ -28,7 +28,7 @@ on:
         default: '2022-02-18'
         type: string
       BranchName:
-        description: 'branch name, only if its other than "main"'
+        description: 'branch name, if its other than "main"'
         required: false
         default: 'main'
         type: string
@@ -58,7 +58,7 @@ jobs:
           $GITHUB_WORKSPACE/enable-repo-branch-protection.sh $OrgName $ApiToken $FromDate $GITHUB_WORKSPACE $BranchName $GithubApiUrl
         env:
           OrgName: ${{ github.event.inputs.OrgName }}
-#          ApiToken: ${{ secrets.API_TOKEN }}
+          ApiToken: ${{ secrets.API_TOKEN }}
           FromDate: ${{ github.event.inputs.FromDate }}
           BranchName: ${{ github.event.inputs.BranchName }}
           GithubApiUrl: ${{ github.event.inputs.GithubApiUrl }}
