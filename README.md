@@ -1,4 +1,4 @@
-# enable-repo-branch-protection
+# Enable repo branch protection
 
 ## Introduction
   This script can be used to enable branch protection rule for all the public repositories in your organization
