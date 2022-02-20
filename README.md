@@ -11,7 +11,7 @@
 ### Input parameters
  - OrganizationName
  - API token having owner/admin permissions on the target repositories
- - FROM Date. This is used to filter repos created after this Date. `yyyy-mm-dd`
+ - FROM Date(optional). This is used to filter repos created after this Date. `yyyy-mm-dd`
  - branchName(optional). defaults to 'main'
  - githubApiUrl(optional). defaults to 'https://api.github.com'
  
