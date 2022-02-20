@@ -27,8 +27,8 @@ fi
     if [ "$listresponse" -eq 200 ]; then
       echo "Fetched list of repos successfully!"
     else
-      echo "********* Something went wrong while fetching repo details for organization"
-      echo "HTTP response code received:$listresponse"
+      echo "ERROR: Something went wrong while fetching repo details for organization"
+      echo "ERROR: HTTP response code received:$listresponse"
       exit 1
     fi;
 
