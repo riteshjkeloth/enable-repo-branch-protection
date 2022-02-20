@@ -18,10 +18,10 @@ on:
         required: true
         default: 'My-Organization-Inc'
         type: string
-      ApiToken:
-        description: 'TOKEN having the right permission to target repositories'
-        required: true
-        type: string
+#      ApiToken:
+#        description: 'TOKEN having the right permission to target repositories'
+#        required: true
+#        type: string
       FromDate:
         description: 'Filter repos created after this Date. format yyyy-mm-dd'
         required: false
